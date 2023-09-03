@@ -7,7 +7,18 @@ services:
     restart: always
     depends_on: 
       - adminer
-    image: backend_geomarkers
+    image: backend_inventory_service
+    ports:
+      - "8080:8080"
+    environment:
+      NODE_ENV: production
+  orders:
+    build: backend/orders_service
+    # command: sh ./docker-entrypoint.sh
+    restart: always
+    depends_on: 
+      - adminer
+    image: backend_orders_service
     ports:
       - "8080:8080"
     environment:
