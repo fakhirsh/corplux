@@ -17,7 +17,7 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 // }));
 
 
-app.post('/saveloc', jsonParser,  (req, res) => {
+app.post('/', jsonParser,  (req, res) => {
   console.log("req: body ", JSON.stringify(req.body));
   res.status(200).send('hello world');
 });
