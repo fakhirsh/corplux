@@ -1,19 +1,13 @@
 version: '3.1'
 
 services:  
-  db:
-    image: postgres
-    restart: always
-    environment:
-      POSTGRES_PASSWORD: postgres
-
-  adminer:
-    image: adminer
-    restart: always
-    depends_on: 
-      - db
-    ports:
-      - 8070:8070
+  # adminer:
+  #   image: adminer
+  #   restart: always
+  #   depends_on: 
+  #     - db
+  #   ports:
+  #     - 8070:8070
   inventory:
     build: backend/inventory_service
     # command: sh ./docker-entrypoint.sh
@@ -22,7 +16,10 @@ services:
     ports:
       - "8080:8080"
     environment:
-      NODE_ENV: production
+      - NODE_ENV=production
+      - MONGODB_URL=mongodb://mongodb:27017/node-boilerplate
+    depends_on:
+      - mongodb
   orders:
     build: backend/orders_service
     # command: sh ./docker-entrypoint.sh
@@ -31,4 +28,23 @@ services:
     ports:
       - "8090:8090"
     environment:
-      NODE_ENV: production
+      - NODE_ENV=production
+      - MONGODB_URL=mongodb://mongodb:27017/node-boilerplate
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo:6-jammy
+    ports:
+      - '27017:27017'
+    volumes:
+      - dbdata6:/data/db
+    networks:
+      - node-network
+
+volumes:
+  dbdata6:
+
+networks:
+  node-network:
+    driver: bridge
