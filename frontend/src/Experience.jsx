@@ -1,4 +1,4 @@
-import { Center, Environment, OrbitControls, Sparkles, shaderMaterial, useGLTF, useTexture, Text, Text3D, useMatcapTexture } from "@react-three/drei";
+import { Center, Environment, OrbitControls, Sparkles, shaderMaterial, useGLTF, useTexture, Text, Text3D, useMatcapTexture, Outlines } from "@react-three/drei";
 import { extend, useFrame } from "@react-three/fiber";
 import { Perf } from "r3f-perf";
 import { useEffect, useRef, useState } from "react";
@@ -98,6 +98,9 @@ export default function Experience() {
                     onPointerOut={() => setAxeSelected(false)}
                 >
                     <meshBasicMaterial map={bakedTexture} />
+                    {axeSelected && (
+                        <Outlines thickness={0.01} color="orange" />
+                    )}
                 </mesh>
                 {axeSelected && (
                     < TextWithBackground position={nodes.axe.position} />
