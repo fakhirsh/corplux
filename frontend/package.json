@@ -12,9 +12,12 @@
   "dependencies": {
     "@react-three/drei": "^9.82.1",
     "@react-three/fiber": "^8.14.1",
+    "r3f-perf": "^7.1.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "three": "^0.156.1"
+    "spectorjs": "^0.9.29",
+    "three": "^0.156.1",
+    "vite-plugin-glsl": "^1.1.2"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
