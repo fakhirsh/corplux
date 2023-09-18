@@ -1,0 +1,69 @@
+version: '3.1'
+
+services:  
+  # adminer:
+  #   image: adminer
+  #   restart: always
+  #   depends_on: 
+  #     - db
+  #   ports:
+  #     - 8070:8070
+  inventory:
+    build: backend/inventory_service
+    # command: sh ./docker-entrypoint.sh
+    restart: always
+    image: backend_inventory_service
+    ports:
+      - "8080:8080"
+    environment:
+      - NODE_ENV=production
+      - MONGO_USERNAME=$MONGO_USERNAME
+      - MONGO_PASSWORD=$MONGO_PASSWORD
+      - MONGO_HOSTNAME=mongodb
+      - MONGO_PORT=$MONGO_PORT
+      - MONGO_DB=$INVENTORY_MONGO
+      # - MONGODB_URL=mongodb://mongodb:27017/node-boilerplate
+    depends_on:
+      - mongodb
+    networks:
+      - node-network
+  orders:
+    build: backend/orders_service
+    # command: sh ./docker-entrypoint.sh
+    restart: always
+    image: backend_orders_service
+    ports:
+      - "8090:8090"
+    environment:
+      - NODE_ENV=production
+      - MONGO_USERNAME=$MONGO_USERNAME
+      - MONGO_PASSWORD=$MONGO_PASSWORD
+      - MONGO_HOSTNAME=mongodb
+      - MONGO_PORT=$MONGO_PORT
+      - MONGO_DB=$ORDER_MONGO
+      # - MONGODB_URL=mongodb://mongodb:27017/node-boilerplate
+    depends_on:
+      - mongodb
+    networks:
+      - node-network
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    restart: unless-stopped
+    ports:
+      - '27017:27017'
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=password
+    volumes:
+      - ./dbdata6:/data/db
+    networks:
+      - node-network
+
+volumes:
+  dbdata6:
+
+networks:
+  node-network:
+    driver: bridge
