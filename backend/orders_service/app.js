@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const bodyParser = require('body-parser');
+const { default: mongoose } = require('mongoose');
 const port = 8080;
 
 app.use(cors());
@@ -23,5 +24,6 @@ app.post('/', jsonParser,  (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening on port 8080`)
+  console.log(`Example app listening on port 8080`);
+  
 })
