@@ -19,12 +19,14 @@ services:
       - NODE_ENV=production
       - MONGO_USERNAME=$MONGO_USERNAME
       - MONGO_PASSWORD=$MONGO_PASSWORD
-      - MONGO_HOSTNAME=db
+      - MONGO_HOSTNAME=mongodb
       - MONGO_PORT=$MONGO_PORT
-      - MONGO_DB=$MONGO_DB
+      - MONGO_DB=$INVENTORY_MONGO
       # - MONGODB_URL=mongodb://mongodb:27017/node-boilerplate
     depends_on:
       - mongodb
+    networks:
+      - node-network
   orders:
     build: backend/orders_service
     # command: sh ./docker-entrypoint.sh
@@ -36,12 +38,14 @@ services:
       - NODE_ENV=production
       - MONGO_USERNAME=$MONGO_USERNAME
       - MONGO_PASSWORD=$MONGO_PASSWORD
-      - MONGO_HOSTNAME=db
+      - MONGO_HOSTNAME=mongodb
       - MONGO_PORT=$MONGO_PORT
-      - MONGO_DB=$MONGO_DB
+      - MONGO_DB=$ORDER_MONGO
       # - MONGODB_URL=mongodb://mongodb:27017/node-boilerplate
     depends_on:
       - mongodb
+    networks:
+      - node-network
 
   mongodb:
     image: mongo:latest
