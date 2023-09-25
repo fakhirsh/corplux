@@ -88,7 +88,7 @@ export default function Experience() {
                 background
                 preset="apartment"
             />
-            <Sky sunPosition={ sunPosition } />
+            <Sky sunPosition={ [4,2,3] } />
 
             <EffectComposer>
                 {/* <DepthOfField focusDistance={0} focalLength={0.02} bokehScale={2} height={480} /> */}
