@@ -1,28 +1,51 @@
 import './App.css'
 import { Canvas, useFrame } from '@react-three/fiber'
 import Experience from './Experience'
+import Navbar from './components/Navbar'
+import { useProgress } from '@react-three/drei';
+
+function Loader({isloading=true}) {
+  if (!isloading) return null;
+
+  const { active, progress, errors, item, loaded, total } = useProgress();
+
+  console.log("Progress: ", progress, "\nErrors: ", errors, "\nItem: ", item, "\nLoaded: ", loaded, "\nTotal: ", total)
+
+  return (
+      <div className="fixed top-0 left-0 z-50 w-full h-full flex items-center justify-center bg-white">
+          <p className="text-black text-2xl">Loading: {progress ? `${progress}%` : '0'}</p>
+      </div>
+  );
+}
+
+// function Loader() {
+//   const { active, progress, errors, item, loaded, total } = useProgress();
+
+//   return (
+//     <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+//       <div className="text-white">Loading: {Math.round(progress)}%</div>
+//     </div>
+//   );
+// }
+
 
 function App() {
 
-/*
-Position: _Vector3 {x: -1.137768585447983, y: -0.2835070983595434, z: 1.6360301129911816} 
-Rotation:  _Euler {isEuler: true, _x: -0.0040239456620568635, _y: -0.4830358088251831, _z: -0.0018690091101864709, 
-*/
-
-
   return (
     <div className='bg-indigo-800 absolute w-full h-screen p-0 top-0 left-0'>
+      {/* <Loader/> */}
+      {/* <Loader /> */}
+      <Navbar />
+      
       <Canvas
         flat
         camera={{ 
-          //position: [-1.137768585447983, -0.2835070983595434, 1.6360301129911816 ],
-          //rotation: [-0.0040239456620568635, -0.4830358088251831, -0.0018690091101864709],
-          //fov: 36,
-          //lookAt: [-2.81447, 0.541734, 0.944357],
+          fov: 36,
         }}
       >
         <Experience />
       </Canvas>
+      {/* <Loader/> */}
     </div>
   )
 }
