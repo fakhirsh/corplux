@@ -69,7 +69,7 @@ function Checkout() {
           <span className="font-bold">Total Payment:</span> $110.00
         </div>
 
-        <button className="bg-blue-500 text-white px-8 py-2 rounded-full w-full font-bold">
+        <button className="bg-blue-500 text-white px-8 py-2 rounded w-full font-bold">
           PLACE ORDER
         </button>
       </div>

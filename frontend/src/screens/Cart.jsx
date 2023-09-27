@@ -1,7 +1,9 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function Cart() {
     const location = useLocation();
+    const navigate = useNavigate();
+    
     const items = location.state.cartItems;
 
    // Sample data for the order summary
@@ -56,7 +58,15 @@ function Cart() {
           <div className="mb-6">
             <span className="text-xl text-gray-700">Total:</span> ${grandTotal.toFixed(2)}
           </div>
-          <button className="w-full bg-blue-500 text-white p-2 rounded">Proceed to Checkout</button>
+          <button 
+            className="w-full bg-blue-500 text-white p-2 rounded"
+            onClick={() => {
+                console.log('Proceed to checkout');
+                navigate("/checkout");
+            }}
+            >
+                Proceed to Checkout
+            </button>
         </div>
       </div>
     );
