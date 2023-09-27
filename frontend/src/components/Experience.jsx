@@ -6,12 +6,15 @@ import { Perf } from "r3f-perf";
 import { useEffect, useRef, useState } from "react";
 import * as THREE from 'three';
 import { useSpring, animated } from "react-spring";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const LAPTOP_FOV = 36;  // Replace 50 with your desired landscape FOV value
 const MOBILE_FOV = 55;
 
 export default function Experience() {
-    
+    const navigate = useNavigate();
+
     const {nodes} = useGLTF('./corplux_stage.glb');
     //console.log(nodes);
     const stageDiffuse = useTexture('./stage_diffuse.jpg');
@@ -22,6 +25,11 @@ export default function Experience() {
 
     const videoTexture = useVideoTexture("/ad.mp4")
     // console.log(videoTexture);
+
+    const productButtonClick = () => {
+        document.body.style.cursor = 'default';
+        navigate("/product-list");
+    }
 
     // const {pos_x, pos_y, pos_z, rot_x, rot_y, rot_z, s_x, s_y, s_z, sunPosition} = useControls({
     //     pos_x: { value: 0, min: -10, max: 10, step: 0.01 },
@@ -136,20 +144,24 @@ Rotation:  _Euler {isEuler: true, _x: -0.029723520944287127, _y: -0.56022546193
                         scale={[0.6, 0.6, 0.6]}
                         onClick={(e) => {
                             // Handle click event
-                            console.log('Clicked on btn_base!');
-                            console.log("Camera Position:", camera.position);
-                            console.log("Camera Quaternion:", camera.quaternion);
+                            // console.log('Clicked on btn_base!');
+                            // console.log("Camera Position:", camera.position);
+                            // console.log("Camera Quaternion:", camera.quaternion);
+                            productButtonClick();
                         }}
                         onPointerOver={(e) => {
                             // Handle hover over event
                             console.log('Mouse over btn_base');
+                            document.body.style.cursor = 'pointer';
                             if (e.eventObject === mesh1.nodes.btn_base) {
                                 setHovered(true);
+                                
                             }
                         }}
                         onPointerOut={(e) => {
                             // Handle hover out event
                             console.log('Mouse out of btn_base');
+                            document.body.style.cursor = 'default';
                         }}
                     >
                         <meshStandardMaterial color="red"/>
