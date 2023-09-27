@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { ShoppingCartIcon } from '@heroicons/react/24/solid'
 
 
-
 export default function Navbar() {
 
     const navigate = useNavigate();

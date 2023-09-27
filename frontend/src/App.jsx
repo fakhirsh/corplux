@@ -2,13 +2,13 @@ import './App.css'
 
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 
-import Home from './components/Home';
 import Navbar from './components/Navbar'
 import { useProgress } from '@react-three/drei';
-import Cart from './components/Cart';
-import Contact from './components/Contact';
-import ProductList from './components/ProductList';
-import Details from './components/Details';
+import Home from './screens/Home';
+import Cart from './screens/Cart';
+import Contact from './screens/Contact';
+import ProductList from './screens/ProductList';
+import Details from './screens/Details';
 
 // function Loader({isloading=true}) {
 //   if (!isloading) return null;
