@@ -1,6 +1,15 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ShoppingCartIcon } from '@heroicons/react/24/solid'
+import { Products } from '../data/mockData';
+
+
+////////////////////////////////////////////////////////////////////////////////
+export const getRandomProducts = (products, count) => {
+    const shuffled = products.sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, count);
+};
+////////////////////////////////////////////////////////////////////////////////
 
 
 export default function Navbar() {
@@ -10,8 +19,13 @@ export default function Navbar() {
     const contactButtonClick = () => {
         navigate("/contact");
     }
+    
     const cartButtonClick = () => {
-        navigate("/cart");
+        const randomProducts = getRandomProducts(Products, 5);
+
+        navigate("/cart", {
+            state: { cartItems: randomProducts }
+        });
     }
 
     return (

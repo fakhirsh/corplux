@@ -3,10 +3,13 @@ import CategoryList from '../components/CategoryList';
 import SearchBar from '../components/SearchBar';
 import ProductCard from '../components/ProductCard';
 import { Products } from '../data/mockData';
+import { useNavigate } from 'react-router-dom';
 
 function ProductListPage() {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [searchTerm, setSearchTerm] = useState('');
+
+  const navigate = useNavigate();
 
   const filteredProducts = Products.filter((product) => {
     if (selectedCategory !== 'All' && product.category !== selectedCategory) {
@@ -30,7 +33,10 @@ function ProductListPage() {
             <ProductCard
               key={product.id}
               product={product}
-              onClick={() => console.log('Product clicked', product.id)}
+              onClick={() => {
+                console.log('Product clicked', product.id);
+                navigate("/details", { state: { productData: product } });
+              }}
             />
           ))}
         </div>
