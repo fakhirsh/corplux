@@ -23,7 +23,7 @@ function ProductListPage() {
           onCategorySelect={setSelectedCategory}
         />
       </aside>
-      <main className="products-section w-3/4 float-right p-4">
+      <main className="products-section w-3/4 p-4">
         <SearchBar onSearch={setSearchTerm} />
         <div className="products-grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 justify-items-center align-items-start">
           {filteredProducts.map((product) => (
