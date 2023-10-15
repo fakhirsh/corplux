@@ -1,7 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ShoppingCartIcon } from '@heroicons/react/24/solid'
+import { Bars3Icon, ShoppingCartIcon } from '@heroicons/react/24/solid'
 import { Products } from '../data/mockData';
+import { menuState } from '../Global';
+import { useRecoilState } from 'recoil';
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -15,6 +17,11 @@ export const getRandomProducts = (products, count) => {
 export default function Navbar() {
 
     const navigate = useNavigate();
+    const [menu, setMenu] = useRecoilState(menuState);
+
+    const toggleMenu = () => {
+        setMenu(prevMenu => !prevMenu); // Toggle the menu state
+    };
 
     const contactButtonClick = () => {
         navigate("/contact");
@@ -22,7 +29,7 @@ export default function Navbar() {
     
     const cartButtonClick = () => {
         const randomProducts = getRandomProducts(Products, 5);
-
+ 
         navigate("/cart", {
             state: { cartItems: randomProducts }
         });
@@ -44,8 +51,12 @@ export default function Navbar() {
                     onClick={cartButtonClick}
                 >
                     <ShoppingCartIcon className="h-6 w-6 text-red-500" />
-                    
-
+                </button>
+                <button
+                    className="md:hidden"
+                    onClick={toggleMenu}
+                >
+                    <Bars3Icon className="h-6 w-6" />
                 </button>
             </div>
             

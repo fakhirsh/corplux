@@ -8,8 +8,14 @@ import { useNavigate } from 'react-router-dom';
 function ProductListPage() {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [searchTerm, setSearchTerm] = useState('');
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
 
   const navigate = useNavigate();
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
 
   const filteredProducts = Products.filter((product) => {
     if (selectedCategory !== 'All' && product.category !== selectedCategory) {
@@ -20,7 +26,7 @@ function ProductListPage() {
 
   return (
     <div className="product-list bg-gray-100 pt-20 min-h-screen flex">
-      <aside className="categories w-1/4 bg-white p-4 border-r sticky top-0">
+      <aside className="categories lg:w-64 sm:w-1/4 bg-white p-4 border-r sticky top-0">
         <CategoryList
           selectedCategory={selectedCategory}
           onCategorySelect={setSelectedCategory}

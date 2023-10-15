@@ -10,6 +10,7 @@ import Contact from './screens/Contact';
 import ProductList from './screens/ProductList';
 import Details from './screens/Details';
 import Checkout from './screens/Checkout';
+import { RecoilRoot } from 'recoil';
 
 // function Loader({isloading=true}) {
 //   if (!isloading) return null;
@@ -40,17 +41,19 @@ function App() {
 
     return (
         <Router>
-            <div className='bg-indigo-100 absolute w-full h-screen p-0 top-0 left-0'>
-                <Navbar />
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/cart" element={<Cart />} />
-                    <Route path="/contact" element={<Contact />} />
-                    <Route path="/product-list" element={<ProductList />} />
-                    <Route path="/details" element={<Details />} />
-                    <Route path="/checkout" element={<Checkout />} />
-                </Routes>
-            </div>
+            <RecoilRoot>
+                <div className='bg-indigo-100 absolute w-full h-screen p-0 top-0 left-0'>
+                    <Navbar />
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/cart" element={<Cart />} />
+                        <Route path="/contact" element={<Contact />} />
+                        <Route path="/product-list" element={<ProductList />} />
+                        <Route path="/details" element={<Details />} />
+                        <Route path="/checkout" element={<Checkout />} />
+                    </Routes>
+                </div>
+            </RecoilRoot>
         </Router>
     );
 }
