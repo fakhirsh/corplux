@@ -12,9 +12,9 @@ function Cart() {
     const grandTotal = subtotal - promoDiscount;
   
     return (
-      <div className="flex p-6 bg-gray-100">
+      <div className="flex flex-col sm:flex-row p-6 bg-gray-100">
         {/* Left Column */}
-        <div className="w-2/3 pr-6">
+        <div className="w-full md:w-2/3 pr-6">
           {items.map((item) => (
             <div key={item.id} className="flex mb-4 bg-white p-4 rounded shadow">
               {/* Product Image */}
@@ -40,7 +40,7 @@ function Cart() {
         </div>
   
         {/* Right Column */}
-        <div className="w-1/3 bg-white p-4 rounded shadow">
+        <div className="w-full sm:w-1/3 bg-white p-4 rounded shadow mb-6 sm:mb-0 sm:ml-6">
           <h2 className="text-2xl mb-4">Order Summary</h2>
           <div className="mb-4">
             <span className="text-gray-600">Subtotal:</span> ${subtotal.toFixed(2)}

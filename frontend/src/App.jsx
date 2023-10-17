@@ -42,7 +42,8 @@ function App() {
     return (
         <Router>
             <RecoilRoot>
-                <div className='bg-indigo-100 absolute w-full h-screen p-0 top-0 left-0'>
+            <div className='absolute w-full h-screen p-0 pt-16 top-0 left-0'>
+
                     <Navbar />
                     <Routes>
                         <Route path="/" element={<Home />} />
