@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const InputField = ({ label, name, placeholder, required, value, onChange }) => (
   <div className="mb-4">
@@ -18,6 +19,8 @@ const InputField = ({ label, name, placeholder, required, value, onChange }) => 
 );
 
 function Checkout() {
+  const navigate = useNavigate();
+
   const [userData, setUserData] = useState({
     fullName: '',
     email: '',
@@ -70,7 +73,13 @@ function Checkout() {
           <span className="font-bold">Total Payment:</span> $110.00
         </div>
 
-        <button className="bg-blue-500 text-white px-8 py-2 rounded w-full font-bold">
+        <button 
+          className="bg-blue-500 text-white px-8 py-2 rounded w-full font-bold"
+          onClick={() => {
+              console.log('Proceed to checkout');
+              navigate("/order-placed");
+          }}
+        >
           PLACE ORDER
         </button>
       </div>

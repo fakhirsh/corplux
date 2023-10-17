@@ -1,12 +1,45 @@
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Torus } from '@react-three/drei';
 import { useLocation } from 'react-router-dom';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
+import { XMarkIcon } from '@heroicons/react/24/solid';
+import { ARButton, XR, useXR } from '@react-three/xr';
+
+function Dialog({ onClose }) {
+    return (
+      <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div className="bg-white p-10 rounded-lg relative">
+                <button 
+                    onClick={onClose} 
+                    className=" bg-gray-500 
+                                text-white 
+                                p-2 
+                                rounded-full
+                                w-8 h-8 
+                                flex 
+                                items-center 
+                                justify-center 
+                                absolute 
+                                top-4 
+                                right-4 
+                                cursor-pointer"
+                >
+                    <XMarkIcon />
+                </button>
+          <h1>Success</h1>
+          <h3>Item added to cart</h3>
+        </div>
+      </div>
+    );
+  }
 
 export default function Details() {
     const location = useLocation();
     const productData = location.state?.productData;
+    const [isDialogVisible, setDialogVisible] = useState(false);
 
+    //const {isPresenting} = useXR();
+    
     const Donut = () => {
         useFrame(({ clock }) => {
             ref.current.rotation.x = Math.sin(clock.getElapsedTime()) * 0.5;
@@ -36,11 +69,23 @@ export default function Details() {
                 <div className="flex flex-col md:flex-row gap-8 flex-grow">
                     {/* Render 3D model */}
                     <div className="product-details bg-green-100 flex-1 h-full min-h-0">
+                        <div className='self-start'>
+                            <ARButton
+                                sessionInit={{
+                                    requiredFeatures: ['hit-test'],
+                                    optionalFeatures: ['dom-overlay'],
+                                    domOverlay: { root: document.body }
+                                }}
+                            />
+                        </div>
+                        
                         <Canvas>
-                            <ambientLight intensity={0.5} />
-                            <pointLight position={[10, 10, 10]} />
-                            <Donut />
-                            <OrbitControls />
+                            <XR>
+                                <ambientLight intensity={0.5} />
+                                <pointLight position={[10, 10, 10]} />
+                                <Donut />
+                                <OrbitControls />
+                            </XR>
                         </Canvas>
                     </div>
                     {/* Product detrails */}
@@ -50,9 +95,15 @@ export default function Details() {
                         <p className="mt-2 text-red-500">${productData.price}</p>
                         <p className="mt-1">Rating: {productData.rating}⭐</p>
                         <p className="mt-2"><strong>Category:</strong> {productData.category}</p>
-                        <button className="mt-6 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">
+                        <button 
+                            className="mt-6 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded"
+                            onClick={() => {
+                                setDialogVisible(true)
+                            }}
+                        >
                             Add to Cart
                         </button>
+                        {isDialogVisible && <Dialog onClose={() => setDialogVisible(false)} />}
                     </div>
                 </div>
             )}
