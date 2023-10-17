@@ -50,6 +50,9 @@ export default function Details() {
                         <p className="mt-2 text-red-500">${productData.price}</p>
                         <p className="mt-1">Rating: {productData.rating}⭐</p>
                         <p className="mt-2"><strong>Category:</strong> {productData.category}</p>
+                        <button className="mt-6 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">
+                            Add to Cart
+                        </button>
                     </div>
                 </div>
             )}
