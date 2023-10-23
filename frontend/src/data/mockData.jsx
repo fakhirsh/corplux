@@ -12,9 +12,9 @@ export const Products = [
     {
         "id": 2,
         "name": "Executive Table",
-        "description": "Spacious table with drawers and a glossy finish",
-        "image": "https://via.placeholder.com/150",
-        "url": "https://localhost:5173/models/chair01.glb",
+        "description": "Spacious table with drawers and a matte finish",
+        "image": "https://localhost:5173/models/table04.jpg",
+        "url": "https://localhost:5173/models/table04.glb",
         "price": 120,
         "rating": 4.5,
         "category": "Tables"
@@ -43,8 +43,8 @@ export const Products = [
         "id": 5,
         "name": "Wooden Cabinet",
         "description": "Multipurpose cabinet with ample space",
-        "image": "https://via.placeholder.com/150",
-        "url": "https://localhost:5173/models/chair01.glb",
+        "image": "https://localhost:5173/models/cabinet04.jpg",
+        "url": "https://localhost:5173/models/cabinet04.glb",
         "price": 180,
         "rating": 4.1,
         "category": "Cabinets"
@@ -63,8 +63,8 @@ export const Products = [
         "id": 7,
         "name": "Cozy Bed",
         "description": "Queen-size bed with cushioned headrest",
-        "image": "https://via.placeholder.com/150",
-        "url": "https://localhost:5173/models/chair01.glb",
+        "image": "https://localhost:5173/models/bed01.jpg",
+        "url": "https://localhost:5173/models/bed01.glb",
         "price": 350,
         "rating": 4.5,
         "category": "Beds"
@@ -113,8 +113,8 @@ export const Products = [
         "id": 12,
         "name": "Metal Cabinet",
         "description": "Sturdy metal cabinet with lock",
-        "image": "https://via.placeholder.com/150",
-        "url": "https://localhost:5173/models/chair01.glb",
+        "image": "https://localhost:5173/models/cabinet02.jpg",
+        "url": "https://localhost:5173/models/cabinet02.glb",
         "price": 190,
         "rating": 4,
         "category": "Cabinets"
@@ -143,8 +143,8 @@ export const Products = [
         "id": 15,
         "name": "Coffee Table",
         "description": "Low-height table perfect for living rooms",
-        "image": "https://via.placeholder.com/150",
-        "url": "https://localhost:5173/models/chair01.glb",
+        "image": "https://localhost:5173/models/table02.jpg",
+        "url": "https://localhost:5173/models/table02.glb",
         "price":
         130,
         "rating": 4.4,
@@ -174,8 +174,8 @@ export const Products = [
         "id": 18,
         "name": "Storage Cabinet",
         "description": "Wooden cabinet with multiple compartments",
-        "image": "https://via.placeholder.com/150",
-        "url": "https://localhost:5173/models/chair01.glb",
+        "image": "https://localhost:5173/models/cabinet03.jpg",
+        "url": "https://localhost:5173/models/cabinet03.glb",
         "price": 210,
         "rating": 4.3,
         "category": "Cabinets"
@@ -184,8 +184,8 @@ export const Products = [
         "id": 19,
         "name": "King Bed",
         "description": "Spacious king-size bed with upholstered design",
-        "image": "https://via.placeholder.com/150",
-        "url": "https://localhost:5173/models/chair01.glb",
+        "image": "https://localhost:5173/models/bed03.jpg",
+        "url": "https://localhost:5173/models/bed03.glb",
         "price": 400,
         "rating": 4.6,
         "category": "Beds"
@@ -203,9 +203,9 @@ export const Products = [
     {
         "id": 21,
         "name": "Nesting Tables",
-        "description": "Set of three tables that can be stored one under the other",
-        "image": "https://via.placeholder.com/150",
-        "url": "https://localhost:5173/models/chair01.glb",
+        "description": "Set of two tables that can be stored one under the other",
+        "image": "https://localhost:5173/models/table03.jpg",
+        "url": "https://localhost:5173/models/table03.glb",
         "price": 200,
         "rating": 4.2,
         "category": "Tables"
@@ -244,8 +244,8 @@ export const Products = [
         "id": 25,
         "name": "Single Bed",
         "description": "Perfect for small rooms and kids",
-        "image": "https://via.placeholder.com/150",
-        "url": "https://localhost:5173/models/chair01.glb",
+        "image": "https://localhost:5173/models/bed02.jpg",
+        "url": "https://localhost:5173/models/bed02.glb",
         "price": 300,
         "rating": 4.3,
         "category": "Beds"
