@@ -1,9 +1,12 @@
-import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls, Torus } from '@react-three/drei';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import { Environment, OrbitControls, Torus, useGLTF } from '@react-three/drei';
 import { useLocation } from 'react-router-dom';
 import { useRef, useState } from 'react';
 import { XMarkIcon } from '@heroicons/react/24/solid';
 import { ARButton, XR, useXR } from '@react-three/xr';
+import { useControls } from 'leva';
+
+import * as THREE from 'three';
 
 function Dialog({ onClose }) {
     return (
@@ -33,6 +36,35 @@ function Dialog({ onClose }) {
     );
   }
 
+    function Model({url}) {
+        const { scene, cameras } = useGLTF(url);
+        const { camera, size } = useThree();
+        
+        // useFrame(() => {
+        //     console.log(camera.position, "\n", camera.rotation);
+        // },[]);
+
+        // const {x,y,z} = useControls('Camera', {
+        //     x: {value: 0, min: -10, max: 10, step: 0.1},
+        //     y: {value: 0, min: -10, max: 10, step: 0.1},
+        //     z: {value: 0, min: -10, max: 10, step: 0.1},
+        // });
+
+        // Assuming the GLB has only one camera; adjust as needed.
+        const glbCamera = cameras[0];
+        // console.log(glbCamera);
+
+        // Set the default camera's position, rotation, etc., based on the GLB's camera.
+        camera.position.copy(glbCamera.position);
+        camera.rotation.copy(glbCamera.rotation);     
+        camera.fov = glbCamera.fov;
+        camera.updateProjectionMatrix();  // Important after changing properties!
+
+        return <primitive 
+                    object={scene}
+                />;
+    }
+
 export default function Details() {
     const location = useLocation();
     const productData = location.state?.productData;
@@ -44,12 +76,14 @@ export default function Details() {
         useFrame(({ clock }) => {
             ref.current.rotation.x = Math.sin(clock.getElapsedTime()) * 0.5;
             ref.current.rotation.y = Math.sin(clock.getElapsedTime()) * 0.5;
+
         });
         const ref = useRef();
 
         return (
             <Torus args={[1, 0.4, 16, 100]} ref={ref}>
-                <meshNormalMaterial attach="material" />
+                {/* <meshNormalMaterial attach="material" /> */}
+                <meshStandardMaterial attach="material" color="hotpink" />
             </Torus>
         );
     };
@@ -68,7 +102,7 @@ export default function Details() {
             {productData && (
                 <div className="flex flex-col md:flex-row gap-8 flex-grow">
                     {/* Render 3D model */}
-                    <div className="product-details bg-green-100 flex-1 h-full min-h-0">
+                    <div className="product-details bg-gray-100 flex-1 h-full min-h-0">
                         <div className='self-start'>
                             <ARButton
                                 sessionInit={{
@@ -81,9 +115,19 @@ export default function Details() {
                         
                         <Canvas>
                             <XR>
-                                <ambientLight intensity={0.5} />
-                                <pointLight position={[10, 10, 10]} />
-                                <Donut />
+                                {/* <ambientLight intensity={0.5} />
+                                <pointLight position={[10, 10, 10]} /> */}
+                                {/* <Donut /> */}
+                                <Model url={productData.url} />
+                                <Environment
+                                    // background
+                                    preset="apartment" 
+                                    // ground={{
+                                    //     height: 15, // Height of the camera that was used to create the env map (Default: 15)
+                                    //     radius: 60, // Radius of the world. (Default 60)
+                                    //     scale: 100, // Scale of the backside projected sphere that holds the env texture (Default: 1000)
+                                    //   }}
+                                />
                                 <OrbitControls />
                             </XR>
                         </Canvas>
