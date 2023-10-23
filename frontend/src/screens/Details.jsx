@@ -1,7 +1,7 @@
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { Environment, OrbitControls, Torus, useGLTF } from '@react-three/drei';
 import { useLocation } from 'react-router-dom';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { XMarkIcon } from '@heroicons/react/24/solid';
 import { ARButton, XR, useXR } from '@react-three/xr';
 import { useControls } from 'leva';
@@ -71,7 +71,7 @@ export default function Details() {
     const [isDialogVisible, setDialogVisible] = useState(false);
 
     //const {isPresenting} = useXR();
-    
+
     const Donut = () => {
         useFrame(({ clock }) => {
             ref.current.rotation.x = Math.sin(clock.getElapsedTime()) * 0.5;

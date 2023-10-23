@@ -73,8 +73,8 @@ export const Products = [
         "id": 8,
         "name": "Chair Bravo",
         "description": "Elegant chair with fabric upholstery",
-        "image": "https://via.placeholder.com/150",
-        "url": "https://localhost:5173/models/chair01.glb",
+        "image": "https://localhost:5173/models/chair03.jpg",
+        "url": "https://localhost:5173/models/chair03.glb",
         "price": 110,
         "rating": 4.2,
         "category": "Chairs"
@@ -82,9 +82,9 @@ export const Products = [
     {
         "id": 9,
         "name": "Dining Table",
-        "description": "Six-seater dining table with glass top",
-        "image": "https://via.placeholder.com/150",
-        "url": "https://localhost:5173/models/chair01.glb",
+        "description": "Six-seater dining table with oak wood finish top",
+        "image": "https://localhost:5173/models/table01.jpg",
+        "url": "https://localhost:5173/models/table01.glb",
         "price": 210,
         "rating": 4.4,
         "category": "Tables"
@@ -132,9 +132,9 @@ export const Products = [
     {
         "id": 14,
         "name": "Chair Charlie",
-        "description": "Classic wooden chair with armrests",
-        "image": "https://via.placeholder.com/150",
-        "url": "https://localhost:5173/models/chair01.glb",
+        "description": "Modern programming chair with armrests",
+        "image": "https://localhost:5173/models/chair04.jpg",
+        "url": "https://localhost:5173/models/chair04.glb",
         "price": 105,
         "rating": 4,
         "category": "Chairs"
@@ -214,8 +214,8 @@ export const Products = [
         "id": 22,
         "name": "Lamp Torch",
         "description": "Tall lamp suitable for corner placement",
-        "image": "https://via.placeholder.com/150",
-        "url": "https://localhost:5173/models/chair01.glb",
+        "image": "https://localhost:5173/models/lamp01.jpg",
+        "url": "https://localhost:5173/models/lamp01.glb",
         "price": 90,
         "rating": 4.1,
         "category": "Lamps"
@@ -234,8 +234,8 @@ export const Products = [
         "id": 24,
         "name": "Drawer Cabinet",
         "description": "Cabinet with multiple drawers for storage",
-        "image": "https://via.placeholder.com/150",
-        "url": "https://localhost:5173/models/chair01.glb",
+        "image": "https://localhost:5173/models/cabinet01.jpg",
+        "url": "https://localhost:5173/models/cabinet01.glb",
         "price": 220,
         "rating": 4.4,
         "category": "Cabinets"
