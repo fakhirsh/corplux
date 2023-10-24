@@ -11,6 +11,7 @@ import ProductList from './screens/ProductList';
 import Details from './screens/Details';
 import Checkout from './screens/Checkout';
 import { RecoilRoot } from 'recoil';
+import OrderPlaced from './screens/OrderPlaced';
 
 // function Loader({isloading=true}) {
 //   if (!isloading) return null;
@@ -42,7 +43,8 @@ function App() {
     return (
         <Router>
             <RecoilRoot>
-                <div className='bg-indigo-100 absolute w-full h-screen p-0 top-0 left-0'>
+            <div className='absolute w-full h-screen p-0 pt-16 top-0 left-0'>
+
                     <Navbar />
                     <Routes>
                         <Route path="/" element={<Home />} />
@@ -51,6 +53,7 @@ function App() {
                         <Route path="/product-list" element={<ProductList />} />
                         <Route path="/details" element={<Details />} />
                         <Route path="/checkout" element={<Checkout />} />
+                        <Route path="/order-placed" element={<OrderPlaced />} />
                     </Routes>
                 </div>
             </RecoilRoot>

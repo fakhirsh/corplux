@@ -10,6 +10,11 @@ export const lightThemeState = atom({
     default: true,
 }); 
 
+export const selectedCategoryState = atom({
+    key: 'selectedCategoryState',
+    default: 'All',
+});
+
 export const cartState = atom({
     key: 'cartState',
     default: [],

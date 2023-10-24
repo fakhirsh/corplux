@@ -84,7 +84,7 @@ Rotation:  _Euler {isEuler: true, _x: -0.029723520944287127, _y: -0.56022546193
     //         requestAnimationFrame(logCameraPosition);
     //     }
         
-    //     logCameraPosition();
+    //     logCameraPosition();0
 
     //     // Cleanup function to stop logging when component is unmounted
     //     return () => cancelAnimationFrame(logCameraPosition);
