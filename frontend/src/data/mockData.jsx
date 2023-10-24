@@ -33,8 +33,8 @@ export const Products = [
         "id": 4,
         "name": "Royal Sofa",
         "description": "Luxurious and comfortable 3-seater sofa",
-        "image": "https://via.placeholder.com/150",
-        "url": "https://localhost:5173/models/chair01.glb",
+        "image": "https://localhost:5173/models/sofa02.jpg",
+        "url": "https://localhost:5173/models/sofa02.glb",
         "price": 450,
         "rating": 4.7,
         "category": "Sofas"
@@ -103,8 +103,8 @@ export const Products = [
         "id": 11,
         "name": "Recliner Sofa",
         "description": "Two-seater recliner with plush cushioning",
-        "image": "https://via.placeholder.com/150",
-        "url": "https://localhost:5173/models/chair01.glb",
+        "image": "https://localhost:5173/models/sofa01.jpg",
+        "url": "https://localhost:5173/models/sofa01.glb",
         "price": 500,
         "rating": 4.6,
         "category": "Sofas"
