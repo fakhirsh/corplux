@@ -53,8 +53,8 @@ export const Products = [
         "id": 6,
         "name": "Lamp Halo",
         "description": "Circular lamp with ambient lighting",
-        "image": "https://via.placeholder.com/150",
-        "url": "https://localhost:5173/models/chair01.glb",
+        "image": "https://localhost:5173/models/lamp02.jpg",
+        "url": "https://localhost:5173/models/lamp02.glb",
         "price": 70,
         "rating": 4.3,
         "category": "Lamps"
@@ -163,9 +163,9 @@ export const Products = [
     {
         "id": 17,
         "name": "Corner Sofa",
-        "description": "L-shaped sofa perfect for lounging",
-        "image": "https://via.placeholder.com/150",
-        "url": "https://localhost:5173/models/chair01.glb",
+        "description": "Comfy three seater sofa perfect for lounging",
+        "image": "https://localhost:5173/models/sofa03.jpg",
+        "url": "https://localhost:5173/models/sofa03.glb",
         "price": 480,
         "rating": 4.7,
         "category": "Sofas"
@@ -223,9 +223,9 @@ export const Products = [
     {
         "id": 23,
         "name": "Couch Duo",
-        "description": "Comfortable two-seater couch",
-        "image": "https://via.placeholder.com/150",
-        "url": "https://localhost:5173/models/chair01.glb",
+        "description": "Green fabric two-seater couch",
+        "image": "https://localhost:5173/models/sofa04.jpg",
+        "url": "https://localhost:5173/models/sofa04.glb",
         "price": 350,
         "rating": 4.5,
         "category": "Sofas"
