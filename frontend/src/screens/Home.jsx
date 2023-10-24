@@ -2,6 +2,7 @@ import { Canvas, useFrame } from '@react-three/fiber'
 import Experience from './Experience'
 import { useProgress } from '@react-three/drei'
 import { useEffect, useState } from 'react';
+import Experience2 from './Experience2';
 
 function Loader() {
     const { progress } = useProgress();
