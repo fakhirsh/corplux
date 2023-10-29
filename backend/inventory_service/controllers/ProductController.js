@@ -9,7 +9,12 @@ const createProducts= async function(){
     console.log('db data for product : : ',data)
     return data;
 }
-
+const updateProducts= async function(body){
+    filter =  body
+    const data = await Product.findOneAndUpdate(body, { size: 'small' });
+    console.log('db data for product : : ',data)
+    return data;
+}
 
 
 
@@ -21,6 +26,7 @@ const createProducts= async function(){
 
 module.exports={
     getProducts,
-    createProducts
+    createProducts,
+    updateProducts
 
 }
