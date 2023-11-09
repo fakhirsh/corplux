@@ -41,7 +41,7 @@ export default function Home(){
             <Canvas
                     flat
                     camera={{ 
-                    fov: 36,
+                    fov: 70,
                     }}
                 >
                     <Experience />

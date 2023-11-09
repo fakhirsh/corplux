@@ -10,7 +10,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const LAPTOP_FOV = 36;  // Replace 50 with your desired landscape FOV value
-const MOBILE_FOV = 55;
+const MOBILE_FOV = 70;
 
 export default function Experience() {
     const navigate = useNavigate();
