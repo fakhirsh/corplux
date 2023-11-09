@@ -52,11 +52,11 @@ Rotation:  _Euler {isEuler: true, _x: -0.029723520944287127, _y: -0.56022546193
 */
 
     const { camera } = useThree();
-    useEffect(() => {
-        camera.position.set(-1.112505147567413, -0.34148052724047506, 1.9676561805147699);
-        camera.quaternion.set(0.02293597168506244, -0.2156830279090632, 0.005067605779075498, 0.9761808705596049)
-        camera.updateProjectionMatrix();  // Update the camera's projection matrix after changing position
-    }, []);
+        useEffect(() => {
+            camera.position.set(-1.112505147567413, -0.34148052724047506, 1.9676561805147699);
+            camera.quaternion.set(0.02293597168506244, -0.2156830279090632, 0.005067605779075498, 0.9761808705596049)
+            camera.updateProjectionMatrix();  // Update the camera's projection matrix after changing position
+        }, []);
 
     useEffect(() => {
         const handleResize = () => {

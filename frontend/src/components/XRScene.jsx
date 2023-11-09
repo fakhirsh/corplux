@@ -27,6 +27,36 @@ function Dialog({ onClose }) {
     );
 }
 
+function calculateFOVForPortraitMode(){
+    return 55;
+}
+
+function calculateFOVForLandscapeMode(){
+    return 30;
+}
+
+function CameraAdjuster() {
+    const { camera, size } = useThree();
+  
+    useEffect(() => {
+      // Your logic to adjust the camera
+      // For example, adjust the FOV or the camera's position
+      const aspectRatio = size.width / size.height;
+      
+      if (aspectRatio < 1) {
+        // This is a tall screen (e.g., mobile device in portrait mode)
+        camera.fov = calculateFOVForPortraitMode(); // Define this function based on your needs
+      } else {
+        // This is a wide screen (e.g., desktop or mobile device in landscape mode)
+        camera.fov = calculateFOVForLandscapeMode(); // Define this function based on your needs
+      }
+  
+      camera.updateProjectionMatrix();
+    }, [camera, size.width, size.height]);
+  
+    return null; // This component does not render anything itself
+  }
+
 function Model(props) {
     const { productData, isPresenting, position, id } = props;
 
@@ -65,10 +95,17 @@ function Model(props) {
     // Create the bounding box helper and add it to the scene
     // const boxHelper = new THREE.Box3Helper(box, 0xffff00); // Yellow color for visualization
     // scene.add(boxHelper);
-    
+
+    let finalPosition = position;  // WARNING: THIS COULD BE NULL !!!
+
+    if(!isPresenting){
+        finalPosition = [0, -(box.max.y-box.min.y)/2, 0];
+    }
+
     return (
         <>
-            <group position={position} scale={[1,1,1]}>
+            <CameraAdjuster />
+            <group position={finalPosition} scale={[1,1,1]}>
                 <primitive object={scene} />
             </group>
             {/* <Text position={[axesSize + 0.5, 0, 0]} fontSize={0.5} color="red">X</Text>
@@ -79,10 +116,11 @@ function Model(props) {
                     center
                     transform
                     // occlude="blending"
-                    occlude
+                    // occlude
                     distanceFactor={0.75}
                     // scale={10}
-                    position={[box.max.x+0.2,-0.1,box.min.z]}
+                    //position={[box.max.x+0.2,(box.max.y-box.min.y)/2,box.min.z]}
+                    position={[box.max.x+0.2,0,box.min.z]}
                 >
                     <div className='unselectable bg-slate-500 bg-opacity-70 p-2 rounded-xl' style={{width:'200px', transform: 'translateX(50%)'}}>
                         <h2 className="mt-4 text-2xl text-white font-bold glow-text">{productData.name}</h2>
