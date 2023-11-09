@@ -24,6 +24,7 @@
     "recoil": "^0.7.7",
     "spectorjs": "^0.9.29",
     "three": "^0.156.1",
+    "uuid": "^9.0.1",
     "vite-plugin-glsl": "^1.1.2"
   },
   "devDependencies": {
