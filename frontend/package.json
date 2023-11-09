@@ -15,8 +15,6 @@
     "@react-three/fiber": "^8.14.1",
     "@react-three/postprocessing": "^2.15.1",
     "@react-three/xr": "^5.7.1",
-    "leva": "^0.9.35",
-    "r3f-perf": "^7.1.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.16.0",
@@ -24,10 +22,11 @@
     "recoil": "^0.7.7",
     "spectorjs": "^0.9.29",
     "three": "^0.156.1",
-    "uuid": "^9.0.1",
     "vite-plugin-glsl": "^1.1.2"
   },
   "devDependencies": {
+    "leva": "^0.9.35",
+    "r3f-perf": "^7.1.2",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@vitejs/plugin-react": "^4.0.3",
