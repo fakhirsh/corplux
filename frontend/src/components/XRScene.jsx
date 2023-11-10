@@ -221,10 +221,6 @@ const XRScene = () => {
                     );
             })}
 
-            {isPresenting && 
-                <Model productData={productData} isPresenting={isPresenting} />
-            }
-
             {isPresenting &&
                 <Interactive onSelect={placeModel}>
                     <mesh ref={reticleRef} rotation-x={-Math.PI / 2}>
