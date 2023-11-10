@@ -8,6 +8,7 @@ import { XMarkIcon } from '@heroicons/react/24/solid';
 import * as THREE from 'three';
 import { useLocation } from 'react-router-dom';
 import { Interactive, useHitTest, useXR } from '@react-three/xr';
+import CameraAdjuster from './CameraAdjuster';
 
 
 function Dialog({ onClose }) {
@@ -27,35 +28,35 @@ function Dialog({ onClose }) {
     );
 }
 
-function calculateFOVForPortraitMode(){
-    return 55;
-}
+// function calculateFOVForPortraitMode(){
+//     return 55;
+// }
 
-function calculateFOVForLandscapeMode(){
-    return 30;
-}
+// function calculateFOVForLandscapeMode(){
+//     return 30;
+// }
 
-function CameraAdjuster() {
-    const { camera, size } = useThree();
+// function CameraAdjuster() {
+//     const { camera, size } = useThree();
   
-    useEffect(() => {
-      // Your logic to adjust the camera
-      // For example, adjust the FOV or the camera's position
-      const aspectRatio = size.width / size.height;
+//     useEffect(() => {
+//       // Your logic to adjust the camera
+//       // For example, adjust the FOV or the camera's position
+//       const aspectRatio = size.width / size.height;
       
-      if (aspectRatio < 1) {
-        // This is a tall screen (e.g., mobile device in portrait mode)
-        camera.fov = calculateFOVForPortraitMode(); // Define this function based on your needs
-      } else {
-        // This is a wide screen (e.g., desktop or mobile device in landscape mode)
-        camera.fov = calculateFOVForLandscapeMode(); // Define this function based on your needs
-      }
+//       if (aspectRatio < 1) {
+//         // This is a tall screen (e.g., mobile device in portrait mode)
+//         camera.fov = calculateFOVForPortraitMode(); // Define this function based on your needs
+//       } else {
+//         // This is a wide screen (e.g., desktop or mobile device in landscape mode)
+//         camera.fov = calculateFOVForLandscapeMode(); // Define this function based on your needs
+//       }
   
-      camera.updateProjectionMatrix();
-    }, [camera, size.width, size.height]);
+//       camera.updateProjectionMatrix();
+//     }, [camera, size.width, size.height]);
   
-    return null; // This component does not render anything itself
-  }
+//     return null; // This component does not render anything itself
+//   }
 
 function Model(props) {
     const { productData, isPresenting, position, id } = props;
@@ -86,7 +87,7 @@ function Model(props) {
     // Set the default camera's position, rotation, etc., based on the GLB's camera.
     camera.position.copy(glbCamera.position);
     camera.rotation.copy(glbCamera.rotation);     
-    camera.fov = glbCamera.fov;
+    //camera.fov = glbCamera.fov;
     camera.updateProjectionMatrix();  // Important after changing properties!
 
     /////////////////////////////////////////////////////////////////
@@ -104,7 +105,6 @@ function Model(props) {
 
     return (
         <>
-            <CameraAdjuster />
             <group position={finalPosition} scale={[1,1,1]}>
                 <primitive object={scene} />
             </group>
@@ -153,6 +153,14 @@ const XRScene = () => {
     const {isPresenting} = useXR();
     // console.log("Is presenting: ", isPresenting);
 
+    // State to keep track of the position
+    const [modelPosition, setModelPosition] = useState([0, 0, 0]);
+
+    // Update model position whenever the reticle moves
+    const updateModelPosition = (newPosition) => {
+        setModelPosition(newPosition);
+    };
+
     useHitTest((hitMatrix, hit) => {
         hitMatrix.decompose(
           reticleRef.current.position,
@@ -189,7 +197,7 @@ const XRScene = () => {
             <hemisphereLight groundColor="white" />
             <Environment preset="apartment" blur={0.8} background = {!isPresenting} />
             <OrbitControls />
-
+            <CameraAdjuster />
             {!isPresenting && 
                 <>
                     <Model {...{
@@ -213,9 +221,9 @@ const XRScene = () => {
                     );
             })}
 
-            {/* {isPresenting && 
+            {isPresenting && 
                 <Model productData={productData} isPresenting={isPresenting} />
-            } */}
+            }
 
             {isPresenting &&
                 <Interactive onSelect={placeModel}>

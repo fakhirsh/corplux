@@ -3,6 +3,7 @@ import Experience from './Experience'
 import { useProgress } from '@react-three/drei'
 import { useEffect, useState } from 'react';
 import Experience2 from './Experience2';
+import CameraAdjuster from '../components/CameraAdjuster';
 
 function Loader() {
     const { progress } = useProgress();
@@ -40,9 +41,9 @@ export default function Home(){
         <div style={{ position: 'relative', width: '100%', height: '100%' }}>
             <Canvas
                     flat
-                    camera={{ 
-                    fov: 70,
-                    }}
+                    // camera={{ 
+                    // fov: 70,
+                    // }}
                 >
                     <Experience />
             </Canvas>

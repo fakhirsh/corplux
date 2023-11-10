@@ -8,9 +8,10 @@ import * as THREE from 'three';
 import { useSpring, animated } from "react-spring";
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import CameraAdjuster from "../components/CameraAdjuster";
 
-const LAPTOP_FOV = 36;  // Replace 50 with your desired landscape FOV value
-const MOBILE_FOV = 70;
+// const LAPTOP_FOV = 36;  // Replace 50 with your desired landscape FOV value
+// const MOBILE_FOV = 70;
 
 export default function Experience() {
     const navigate = useNavigate();
@@ -58,24 +59,24 @@ Rotation:  _Euler {isEuler: true, _x: -0.029723520944287127, _y: -0.56022546193
             camera.updateProjectionMatrix();  // Update the camera's projection matrix after changing position
         }, []);
 
-    useEffect(() => {
-        const handleResize = () => {
-            if (window.innerHeight > window.innerWidth) {
-                // It's portrait
-                camera.fov = MOBILE_FOV; // e.g., 75 or whatever works for your scene
-            } else {
-                // It's landscape
-                camera.fov = LAPTOP_FOV; // e.g., 50
-            }
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-        };
+    // useEffect(() => {
+    //     const handleResize = () => {
+    //         if (window.innerHeight > window.innerWidth) {
+    //             // It's portrait
+    //             camera.fov = MOBILE_FOV; // e.g., 75 or whatever works for your scene
+    //         } else {
+    //             // It's landscape
+    //             camera.fov = LAPTOP_FOV; // e.g., 50
+    //         }
+    //         camera.aspect = window.innerWidth / window.innerHeight;
+    //         camera.updateProjectionMatrix();
+    //     };
     
-        window.addEventListener('resize', handleResize);
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, [camera]);
+    //     window.addEventListener('resize', handleResize);
+    //     return () => {
+    //         window.removeEventListener('resize', handleResize);
+    //     };
+    // }, [camera]);
     
     
     // useEffect(() => {
@@ -118,7 +119,7 @@ Rotation:  _Euler {isEuler: true, _x: -0.029723520944287127, _y: -0.56022546193
                 enabled={false}
             >
             </OrbitControls> */}
-        
+            <CameraAdjuster />
             <Float
                 speed={0.3} // Animation speed, defaults to 1
                 rotationIntensity={1} // XYZ rotation intensity, defaults to 1
