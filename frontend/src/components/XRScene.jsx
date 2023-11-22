@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import { useFrame, useThree } from '@react-three/fiber';
-import { ContactShadows, Environment, Html, OrbitControls, PresentationControls, Text, Torus, useGLTF } from '@react-three/drei';
+import { ContactShadows, Environment, Html, OrbitControls, PivotControls, PresentationControls, Text, Torus, useGLTF } from '@react-three/drei';
 import { useState } from 'react';
 import { XMarkIcon } from '@heroicons/react/24/solid';
 // import { v4 as uuidv4 } from 'uuid';
@@ -212,12 +212,18 @@ const XRScene = () => {
             {isPresenting &&
                 models.map(({ position, id }) => {
                     return (
-                        <Model {...{
-                            productData: productData, 
-                            isPresenting:isPresenting,
-                            id:id,
-                            position: position
-                        }}/>
+                        // <PivotControls
+                        //     anchor={[0,0,0]}
+                        //     depthTest={false}
+                        //     lineWidth={4}
+                        // >
+                            <Model {...{
+                                productData: productData, 
+                                isPresenting:isPresenting,
+                                id:id,
+                                position: position
+                            }}/>
+                        // </PivotControls>
                     );
             })}
 
