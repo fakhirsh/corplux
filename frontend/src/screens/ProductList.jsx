@@ -34,8 +34,8 @@ function ProductListPage() {
         <div className="product-list bg-gray-100 min-h-screen flex pl-0 md:pl-64">
             <Sidebar />
             
-            <main className="bg-red-200 products-section p-4 flex-grow">
-                <div className='bg-green-100 w-full pb-6 flex justify-center'>
+            <main className=" products-section p-4 flex-grow">
+                <div className=' w-full pb-6 flex justify-center'>
                     <SearchBar onSearch={setSearchTerm} />
                 </div>
                 

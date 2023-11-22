@@ -40,3 +40,34 @@
 .read-the-docs {
   color: #888;
 }
+
+.glow-text {
+  color: #FF0000; /* Red color, you can adjust if needed */
+  text-shadow: 
+    0 0 5px #63F7CF, 
+    0 0 10px #63F7CF;
+}
+
+.annotation {
+  cursor: pointer;
+  outline: none;
+  border: none;
+  font-size: 8px;
+  font-weight: 300;
+  background: #2d4967BB;
+  color: #f0f0f0;
+  padding: 2px 10px;
+  border-radius: 20px;
+  letter-spacing: 1px;
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.unselectable {
+  user-select: none;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE/Edge */
+}
