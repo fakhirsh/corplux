@@ -1,0 +1,22 @@
+# Apps in a separate containers:
+
+version: '3.8'
+
+services:
+
+  corplux:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: corplux
+    ports:
+      - "40001:40001"
+    volumes:
+      - ${WEBSITE_VOLUME}
+    networks:
+      - public-network
+
+networks:
+  public-network:
+    driver: bridge
+  

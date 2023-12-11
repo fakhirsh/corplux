@@ -1,0 +1,1 @@
+rsync -avz ./dist/ fakhir@fakhirshaheen.com:/home/nginx/apps/corplux/frontend
