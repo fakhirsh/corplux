@@ -24,7 +24,7 @@ export default function Experience() {
     const mesh1 = useGLTF('./interactables.glb');
     // console.log(mesh1.nodes);
 
-    const videoTexture = useVideoTexture("/ad.mp4")
+    const videoTexture = useVideoTexture("./ad.mp4")
     // console.log(videoTexture);
 
     const productButtonClick = () => {

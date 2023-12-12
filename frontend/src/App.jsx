@@ -47,7 +47,7 @@ function App() {
 
                     <Navbar />
                     <Routes>
-                        <Route path="/" element={<Home />} />
+                        <Route path="/corplux" element={<Home />} />
                         <Route path="/cart" element={<Cart />} />
                         <Route path="/contact" element={<Contact />} />
                         <Route path="/product-list" element={<ProductList />} />
