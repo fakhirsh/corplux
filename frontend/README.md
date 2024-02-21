@@ -14,3 +14,8 @@ https://fakhirshaheen.com/corplux
 
 - Base path `/corplex` must be added to the vite.config.js file:
 - Also all of the assets currently in the `public` folder have to be manually appended with `/corplux`.
+
+Secondlt, the home path `/` must be redirected to `/corplux` in App.jsx file:
+```
+<Route path="/corplux" element={<Home />} />
+```
